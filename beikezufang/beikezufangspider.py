@@ -4,8 +4,7 @@ import pymysql
 from bs4 import BeautifulSoup
 
 
-
-class JdSpider():
+class BkSpider():
     def __init__(self, keyword, max_page, mysql_host,
                  mysql_user, mysql_password, mysql_db, mysql_port):
         self.keyword = keyword
@@ -72,4 +71,4 @@ class JdSpider():
 
 
 if __name__ == '__main__':
-    JdSpider('gz', 100, 'localhost', 'root', '12345', 'beike', 3306).run()
+    BkSpider('sz', 100, 'localhost', 'root', '12345', 'beike', 3306).run()
