@@ -52,8 +52,12 @@ class BkSpider():
         keys = ','.join(data.keys())
         values = ','.join(['%s'] * len(data))
         sql = 'insert into %s (%s) values (%s)' % (table, keys, values)
-        cursor.execute(sql, tuple(data.values()))
-        self.db.commit()
+        try:
+            if cursor.execute(sql, tuple(data.values())):
+                self.db.commit()
+        except:
+            print('保存失败')
+            self.db.rollback()
 
     def close_sql(self):
         self.db.close()
